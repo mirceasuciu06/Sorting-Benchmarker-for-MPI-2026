@@ -1,26 +1,182 @@
-Bubble Sort,175142 nanoseconds,0.175142 milliseconds,0.000175142 seconds
-Insertion Sort,77030 nanoseconds,0.07703 milliseconds,7.703e-05 seconds
-Selection Sort,124109 nanoseconds,0.124109 milliseconds,0.000124109 seconds
-Merge Sort,65056 nanoseconds,0.065056 milliseconds,6.5056e-05 seconds
-Heap Sort,45952 nanoseconds,0.045952 milliseconds,4.5952e-05 seconds
-Quick Sort,26541 nanoseconds,0.026541 milliseconds,2.6541e-05 seconds
-Cycle Sort,171462 nanoseconds,0.171462 milliseconds,0.000171462 seconds
-3-way Merge Sort,55378 nanoseconds,0.055378 milliseconds,5.5378e-05 seconds
-Counting Sort,15926 nanoseconds,0.015926 milliseconds,1.5926e-05 seconds
-Radix Sort,35214 nanoseconds,0.035214 milliseconds,3.5214e-05 seconds
-Introsort,49173 nanoseconds,0.049173 milliseconds,4.9173e-05 seconds
-Timsort,42026 nanoseconds,0.042026 milliseconds,4.2026e-05 seconds
+Bubble Sort,12031 nanoseconds,0.012031 milliseconds,1.2031e-05 seconds
+Insertion Sort,5900 nanoseconds,0.0059 milliseconds,5.9e-06 seconds
+Selection Sort,8867 nanoseconds,0.008867 milliseconds,8.867e-06 seconds
+Merge Sort,17407 nanoseconds,0.017407 milliseconds,1.7407e-05 seconds
+Heap Sort,9362 nanoseconds,0.009362 milliseconds,9.362e-06 seconds
+Quick Sort,4419 nanoseconds,0.004419 milliseconds,4.419e-06 seconds
+Cycle Sort,13728 nanoseconds,0.013728 milliseconds,1.3728e-05 seconds
+3-way Merge Sort,13069 nanoseconds,0.013069 milliseconds,1.3069e-05 seconds
+Counting Sort,5932 nanoseconds,0.005932 milliseconds,5.932e-06 seconds
+Radix Sort,8965 nanoseconds,0.008965 milliseconds,8.965e-06 seconds
+Introsort,28239 nanoseconds,0.028239 milliseconds,2.8239e-05 seconds
+Timsort,7694 nanoseconds,0.007694 milliseconds,7.694e-06 seconds
 
-Bubble Sort,166149 nanoseconds,0.166149 milliseconds,0.000166149 seconds
-Insertion Sort,68028 nanoseconds,0.068028 milliseconds,6.8028e-05 seconds
-Selection Sort,99266 nanoseconds,0.099266 milliseconds,9.9266e-05 seconds
-Merge Sort,62103 nanoseconds,0.062103 milliseconds,6.2103e-05 seconds
-Heap Sort,45681 nanoseconds,0.045681 milliseconds,4.5681e-05 seconds
-Quick Sort,26033 nanoseconds,0.026033 milliseconds,2.6033e-05 seconds
-Cycle Sort,191095 nanoseconds,0.191095 milliseconds,0.000191095 seconds
-3-way Merge Sort,52983 nanoseconds,0.052983 milliseconds,5.2983e-05 seconds
-Counting Sort,15391 nanoseconds,0.015391 milliseconds,1.5391e-05 seconds
-Radix Sort,36037 nanoseconds,0.036037 milliseconds,3.6037e-05 seconds
-Introsort,48521 nanoseconds,0.048521 milliseconds,4.8521e-05 seconds
-Timsort,38095 nanoseconds,0.038095 milliseconds,3.8095e-05 seconds
+Bubble Sort,1209 nanoseconds,0.001209 milliseconds,1.209e-06 seconds
+Insertion Sort,819 nanoseconds,0.000819 milliseconds,8.19e-07 seconds
+Selection Sort,1067 nanoseconds,0.001067 milliseconds,1.067e-06 seconds
+Merge Sort,4113 nanoseconds,0.004113 milliseconds,4.113e-06 seconds
+Heap Sort,1657 nanoseconds,0.001657 milliseconds,1.657e-06 seconds
+Quick Sort,1004 nanoseconds,0.001004 milliseconds,1.004e-06 seconds
+Cycle Sort,1421 nanoseconds,0.001421 milliseconds,1.421e-06 seconds
+3-way Merge Sort,3737 nanoseconds,0.003737 milliseconds,3.737e-06 seconds
+Counting Sort,6185 nanoseconds,0.006185 milliseconds,6.185e-06 seconds
+Radix Sort,4640 nanoseconds,0.00464 milliseconds,4.64e-06 seconds
+Introsort,1372 nanoseconds,0.001372 milliseconds,1.372e-06 seconds
+Timsort,1872 nanoseconds,0.001872 milliseconds,1.872e-06 seconds
+
+Bubble Sort,609 nanoseconds,0.000609 milliseconds,6.09e-07 seconds
+Insertion Sort,431 nanoseconds,0.000431 milliseconds,4.31e-07 seconds
+Selection Sort,687 nanoseconds,0.000687 milliseconds,6.87e-07 seconds
+Merge Sort,3161 nanoseconds,0.003161 milliseconds,3.161e-06 seconds
+Heap Sort,1261 nanoseconds,0.001261 milliseconds,1.261e-06 seconds
+Quick Sort,1128 nanoseconds,0.001128 milliseconds,1.128e-06 seconds
+Cycle Sort,528 nanoseconds,0.000528 milliseconds,5.28e-07 seconds
+3-way Merge Sort,2600 nanoseconds,0.0026 milliseconds,2.6e-06 seconds
+Counting Sort,8767 nanoseconds,0.008767 milliseconds,8.767e-06 seconds
+Radix Sort,5083 nanoseconds,0.005083 milliseconds,5.083e-06 seconds
+Introsort,2678 nanoseconds,0.002678 milliseconds,2.678e-06 seconds
+Timsort,1197 nanoseconds,0.001197 milliseconds,1.197e-06 seconds
+
+Bubble Sort,560 nanoseconds,0.00056 milliseconds,5.6e-07 seconds
+Insertion Sort,378 nanoseconds,0.000378 milliseconds,3.78e-07 seconds
+Selection Sort,580 nanoseconds,0.00058 milliseconds,5.8e-07 seconds
+Merge Sort,3129 nanoseconds,0.003129 milliseconds,3.129e-06 seconds
+Heap Sort,1075 nanoseconds,0.001075 milliseconds,1.075e-06 seconds
+Quick Sort,961 nanoseconds,0.000961 milliseconds,9.61e-07 seconds
+Cycle Sort,498 nanoseconds,0.000498 milliseconds,4.98e-07 seconds
+3-way Merge Sort,2596 nanoseconds,0.002596 milliseconds,2.596e-06 seconds
+Counting Sort,135706 nanoseconds,0.135706 milliseconds,0.000135706 seconds
+Radix Sort,6853 nanoseconds,0.006853 milliseconds,6.853e-06 seconds
+Introsort,2599 nanoseconds,0.002599 milliseconds,2.599e-06 seconds
+Timsort,1437 nanoseconds,0.001437 milliseconds,1.437e-06 seconds
+
+Bubble Sort,17362492 nanoseconds,17.3625 milliseconds,0.0173625 seconds
+Insertion Sort,4827702 nanoseconds,4.8277 milliseconds,0.0048277 seconds
+Selection Sort,6682419 nanoseconds,6.68242 milliseconds,0.00668242 seconds
+Merge Sort,789074 nanoseconds,0.789074 milliseconds,0.000789074 seconds
+Heap Sort,590616 nanoseconds,0.590616 milliseconds,0.000590616 seconds
+Quick Sort,315836 nanoseconds,0.315836 milliseconds,0.000315836 seconds
+Cycle Sort,16489740 nanoseconds,16.4897 milliseconds,0.0164897 seconds
+3-way Merge Sort,691382 nanoseconds,0.691382 milliseconds,0.000691382 seconds
+Counting Sort,325916 nanoseconds,0.325916 milliseconds,0.000325916 seconds
+Radix Sort,370341 nanoseconds,0.370341 milliseconds,0.000370341 seconds
+Introsort,353576 nanoseconds,0.353576 milliseconds,0.000353576 seconds
+Timsort,728946 nanoseconds,0.728946 milliseconds,0.000728946 seconds
+
+Bubble Sort,15602050 nanoseconds,15.6021 milliseconds,0.015602 seconds
+Insertion Sort,5709549 nanoseconds,5.70955 milliseconds,0.00570955 seconds
+Selection Sort,7669580 nanoseconds,7.66958 milliseconds,0.00766958 seconds
+Merge Sort,868812 nanoseconds,0.868812 milliseconds,0.000868812 seconds
+Heap Sort,737440 nanoseconds,0.73744 milliseconds,0.00073744 seconds
+Quick Sort,431891 nanoseconds,0.431891 milliseconds,0.000431891 seconds
+Cycle Sort,17016423 nanoseconds,17.0164 milliseconds,0.0170164 seconds
+3-way Merge Sort,716780 nanoseconds,0.71678 milliseconds,0.00071678 seconds
+Counting Sort,321705 nanoseconds,0.321705 milliseconds,0.000321705 seconds
+Radix Sort,369875 nanoseconds,0.369875 milliseconds,0.000369875 seconds
+Introsort,421898 nanoseconds,0.421898 milliseconds,0.000421898 seconds
+Timsort,565878 nanoseconds,0.565878 milliseconds,0.000565878 seconds
+
+Bubble Sort,15249122 nanoseconds,15.2491 milliseconds,0.0152491 seconds
+Insertion Sort,5499043 nanoseconds,5.49904 milliseconds,0.00549904 seconds
+Selection Sort,7582808 nanoseconds,7.58281 milliseconds,0.00758281 seconds
+Merge Sort,923502 nanoseconds,0.923502 milliseconds,0.000923502 seconds
+Heap Sort,690736 nanoseconds,0.690736 milliseconds,0.000690736 seconds
+Quick Sort,337435 nanoseconds,0.337435 milliseconds,0.000337435 seconds
+Cycle Sort,17287250 nanoseconds,17.2873 milliseconds,0.0172873 seconds
+3-way Merge Sort,846754 nanoseconds,0.846754 milliseconds,0.000846754 seconds
+Counting Sort,407185 nanoseconds,0.407185 milliseconds,0.000407185 seconds
+Radix Sort,774491 nanoseconds,0.774491 milliseconds,0.000774491 seconds
+Introsort,636680 nanoseconds,0.63668 milliseconds,0.00063668 seconds
+Timsort,883081 nanoseconds,0.883081 milliseconds,0.000883081 seconds
+
+Bubble Sort,20860421 nanoseconds,20.8604 milliseconds,0.0208604 seconds
+Insertion Sort,5750832 nanoseconds,5.75083 milliseconds,0.00575083 seconds
+Selection Sort,9275945 nanoseconds,9.27595 milliseconds,0.00927595 seconds
+Merge Sort,1200079 nanoseconds,1.20008 milliseconds,0.00120008 seconds
+Heap Sort,1040357 nanoseconds,1.04036 milliseconds,0.00104036 seconds
+Quick Sort,481836 nanoseconds,0.481836 milliseconds,0.000481836 seconds
+Cycle Sort,18748164 nanoseconds,18.7482 milliseconds,0.0187482 seconds
+3-way Merge Sort,1015452 nanoseconds,1.01545 milliseconds,0.00101545 seconds
+Counting Sort,413008 nanoseconds,0.413008 milliseconds,0.000413008 seconds
+Radix Sort,453497 nanoseconds,0.453497 milliseconds,0.000453497 seconds
+Introsort,457808 nanoseconds,0.457808 milliseconds,0.000457808 seconds
+Timsort,658803 nanoseconds,0.658803 milliseconds,0.000658803 seconds
+
+Bubble Sort,18748930 nanoseconds,18.7489 milliseconds,0.0187489 seconds
+Insertion Sort,6564174 nanoseconds,6.56417 milliseconds,0.00656417 seconds
+Selection Sort,6605999 nanoseconds,6.606 milliseconds,0.006606 seconds
+Merge Sort,778632 nanoseconds,0.778632 milliseconds,0.000778632 seconds
+Heap Sort,650121 nanoseconds,0.650121 milliseconds,0.000650121 seconds
+Quick Sort,398285 nanoseconds,0.398285 milliseconds,0.000398285 seconds
+Cycle Sort,19206413 nanoseconds,19.2064 milliseconds,0.0192064 seconds
+3-way Merge Sort,997791 nanoseconds,0.997791 milliseconds,0.000997791 seconds
+Counting Sort,396827 nanoseconds,0.396827 milliseconds,0.000396827 seconds
+Radix Sort,455998 nanoseconds,0.455998 milliseconds,0.000455998 seconds
+Introsort,518857 nanoseconds,0.518857 milliseconds,0.000518857 seconds
+Timsort,731158 nanoseconds,0.731158 milliseconds,0.000731158 seconds
+
+Bubble Sort,1175345255 nanoseconds,1175.35 milliseconds,1.17535 seconds
+Insertion Sort,456244291 nanoseconds,456.244 milliseconds,0.456244 seconds
+Selection Sort,594094468 nanoseconds,594.094 milliseconds,0.594094 seconds
+Merge Sort,6559052 nanoseconds,6.55905 milliseconds,0.00655905 seconds
+Heap Sort,6006959 nanoseconds,6.00696 milliseconds,0.00600696 seconds
+Quick Sort,41263983 nanoseconds,41.264 milliseconds,0.041264 seconds
+Cycle Sort,1028192106 nanoseconds,1028.19 milliseconds,1.02819 seconds
+3-way Merge Sort,6046365 nanoseconds,6.04636 milliseconds,0.00604636 seconds
+Counting Sort,736682 nanoseconds,0.736682 milliseconds,0.000736682 seconds
+Radix Sort,733779 nanoseconds,0.733779 milliseconds,0.000733779 seconds
+Introsort,2362460 nanoseconds,2.36246 milliseconds,0.00236246 seconds
+Timsort,5475978 nanoseconds,5.47598 milliseconds,0.00547598 seconds
+
+Bubble Sort,1169781856 nanoseconds,1169.78 milliseconds,1.16978 seconds
+Insertion Sort,393845021 nanoseconds,393.845 milliseconds,0.393845 seconds
+Selection Sort,519335687 nanoseconds,519.336 milliseconds,0.519336 seconds
+Merge Sort,6492416 nanoseconds,6.49242 milliseconds,0.00649242 seconds
+Heap Sort,5990242 nanoseconds,5.99024 milliseconds,0.00599024 seconds
+Quick Sort,36922736 nanoseconds,36.9227 milliseconds,0.0369227 seconds
+Cycle Sort,1032223287 nanoseconds,1032.22 milliseconds,1.03222 seconds
+3-way Merge Sort,5995257 nanoseconds,5.99526 milliseconds,0.00599526 seconds
+Counting Sort,719587 nanoseconds,0.719587 milliseconds,0.000719587 seconds
+Radix Sort,722681 nanoseconds,0.722681 milliseconds,0.000722681 seconds
+Introsort,2216983 nanoseconds,2.21698 milliseconds,0.00221698 seconds
+Timsort,5074960 nanoseconds,5.07496 milliseconds,0.00507496 seconds
+
+Bubble Sort,1180105128 nanoseconds,1180.11 milliseconds,1.18011 seconds
+Insertion Sort,394450959 nanoseconds,394.451 milliseconds,0.394451 seconds
+Selection Sort,522291060 nanoseconds,522.291 milliseconds,0.522291 seconds
+Merge Sort,6476994 nanoseconds,6.47699 milliseconds,0.00647699 seconds
+Heap Sort,6045731 nanoseconds,6.04573 milliseconds,0.00604573 seconds
+Quick Sort,35812022 nanoseconds,35.812 milliseconds,0.035812 seconds
+Cycle Sort,1228922777 nanoseconds,1228.92 milliseconds,1.22892 seconds
+3-way Merge Sort,8353056 nanoseconds,8.35306 milliseconds,0.00835306 seconds
+Counting Sort,896598 nanoseconds,0.896598 milliseconds,0.000896598 seconds
+Radix Sort,1010399 nanoseconds,1.0104 milliseconds,0.0010104 seconds
+Introsort,4105183 nanoseconds,4.10518 milliseconds,0.00410518 seconds
+Timsort,7026955 nanoseconds,7.02696 milliseconds,0.00702695 seconds
+
+Bubble Sort,1427579398 nanoseconds,1427.58 milliseconds,1.42758 seconds
+Insertion Sort,460221863 nanoseconds,460.222 milliseconds,0.460222 seconds
+Selection Sort,541087626 nanoseconds,541.088 milliseconds,0.541088 seconds
+Merge Sort,7337655 nanoseconds,7.33765 milliseconds,0.00733766 seconds
+Heap Sort,7525190 nanoseconds,7.52519 milliseconds,0.00752519 seconds
+Quick Sort,42658458 nanoseconds,42.6585 milliseconds,0.0426585 seconds
+Cycle Sort,1087482271 nanoseconds,1087.48 milliseconds,1.08748 seconds
+3-way Merge Sort,7335159 nanoseconds,7.33516 milliseconds,0.00733516 seconds
+Counting Sort,767732 nanoseconds,0.767732 milliseconds,0.000767732 seconds
+Radix Sort,773305 nanoseconds,0.773305 milliseconds,0.000773305 seconds
+Introsort,2493948 nanoseconds,2.49395 milliseconds,0.00249395 seconds
+Timsort,6209368 nanoseconds,6.20937 milliseconds,0.00620937 seconds
+
+Bubble Sort,1287273610 nanoseconds,1287.27 milliseconds,1.28727 seconds
+Insertion Sort,424144137 nanoseconds,424.144 milliseconds,0.424144 seconds
+Selection Sort,540600819 nanoseconds,540.601 milliseconds,0.540601 seconds
+Merge Sort,7675111 nanoseconds,7.67511 milliseconds,0.00767511 seconds
+Heap Sort,7466106 nanoseconds,7.46611 milliseconds,0.00746611 seconds
+Quick Sort,39947782 nanoseconds,39.9478 milliseconds,0.0399478 seconds
+Cycle Sort,1130483475 nanoseconds,1130.48 milliseconds,1.13048 seconds
+3-way Merge Sort,6424031 nanoseconds,6.42403 milliseconds,0.00642403 seconds
+Counting Sort,676036 nanoseconds,0.676036 milliseconds,0.000676036 seconds
+Radix Sort,742519 nanoseconds,0.742519 milliseconds,0.000742519 seconds
+Introsort,2397308 nanoseconds,2.39731 milliseconds,0.00239731 seconds
+Timsort,5185229 nanoseconds,5.18523 milliseconds,0.00518523 seconds
 

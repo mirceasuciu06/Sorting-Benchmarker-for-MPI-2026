@@ -6,9 +6,27 @@
 #include <algorithm>
 #include <cmath>
 #include <fstream>
+#include <sstream>
+#include <string>
 
 using namespace std;
+ifstream inputFile("custom_list.txt");
 ofstream outputFile("sorting_times.csv", ios::app);
+
+// Forward declarations of sorting functions
+void bubble_sort(vector<int>& arr);
+void insertion_sort(vector<int>& arr);
+void selection_sort(vector<int>& arr);
+void merge_sort(vector<int>& arr);
+void heap_sort(vector<int>& arr);
+void quick_sort(vector<int>& arr);
+void cocktail_sort(vector<int>& arr);
+void cycle_sort(vector<int>& arr);
+void merge_sort_3way(vector<int>& arr);
+void counting_sort(vector<int>& arr);
+void radix_sort(vector<int>& arr);
+void introsort(vector<int>& arr);
+void timsort(vector<int>& arr);
 
 vector<int> generateRandomNumbers(int maxNumber, int count) {
     std::vector<int> randomList;
@@ -19,6 +37,205 @@ vector<int> generateRandomNumbers(int maxNumber, int count) {
     }
 
     return randomList;
+}
+
+vector<int> loadCustomList() {
+    std::vector<int> customList;
+    std::ifstream file("custom_list.txt");
+    
+    if (!file.is_open()) {
+        cout << "Error: Could not open custom_list.txt" << endl;
+        return customList;
+    }
+    
+    int num;
+    while (file >> num) {
+        customList.push_back(num);
+    }
+    
+    file.close();
+    
+    if (customList.empty()) {
+        cout << "Error: custom_list.txt is empty" << endl;
+    } else {
+        cout << "Loaded " << customList.size() << " elements from custom_list.txt" << endl;
+    }
+    
+    return customList;
+}
+
+vector<vector<int>> loadAllCustomListsByLine() {
+    vector<vector<int>> allLists;
+    std::ifstream file("custom_list.txt");
+    
+    if (!file.is_open()) {
+        cout << "Error: Could not open custom_list.txt" << endl;
+        return allLists;
+    }
+    
+    string line;
+    int lineNum = 0;
+    while (getline(file, line)) {
+        if (line.empty()) continue;
+        
+        vector<int> currentList;
+        istringstream iss(line);
+        int num;
+        while (iss >> num) {
+            currentList.push_back(num);
+        }
+        
+        if (!currentList.empty()) {
+            allLists.push_back(currentList);
+            lineNum++;
+            cout << "Loaded custom list " << lineNum << " with " << currentList.size() << " elements" << endl;
+        }
+    }
+    
+    file.close();
+    return allLists;
+}
+
+void saveUsedList(const vector<int>& list, const string& listType) {
+    // Read existing content
+    vector<string> lines;
+    std::ifstream readFile("last_used_lists.txt");
+    string line;
+    while (getline(readFile, line)) {
+        lines.push_back(line);
+    }
+    readFile.close();
+    
+    // Prepare new entry
+    ostringstream newEntry;
+    newEntry << "List Type: " << listType << " | Size: " << list.size() << " | Elements: ";
+    for (int i = 0; i < list.size(); i++) {
+        newEntry << list[i];
+        if (i < list.size() - 1) newEntry << " ";
+    }
+    
+    // Write back with new entry at the beginning
+    std::ofstream writeFile("last_used_lists.txt");
+    if (!writeFile.is_open()) {
+        cout << "Error: Could not open last_used_lists.txt" << endl;
+        return;
+    }
+    
+    writeFile << newEntry.str() << endl;
+    for (const auto& existingLine : lines) {
+        writeFile << existingLine << endl;
+    }
+    
+    writeFile.close();
+}
+
+void runAllSortingAlgorithms(const vector<int>& originalList, const string& listLabel) {
+    cout << "\n=== Running sorting algorithms for: " << listLabel << " ==="  << endl;
+    saveUsedList(originalList, listLabel);
+    
+    vector<int> arr1 = originalList;
+    auto start = std::chrono::steady_clock::now();
+    bubble_sort(arr1);
+    auto end = std::chrono::steady_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    cout << "Bubble sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" <<std::endl;
+    outputFile << "Bubble Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
+
+    vector<int> arr2 = originalList;
+    start = std::chrono::steady_clock::now();
+    insertion_sort(arr2);
+    end = std::chrono::steady_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    cout << "Insertion sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
+    outputFile << "Insertion Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
+
+    vector<int> arr3 = originalList;
+    start = std::chrono::steady_clock::now();
+    selection_sort(arr3);
+    end = std::chrono::steady_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    cout << "Selection sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
+    outputFile << "Selection Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
+
+    vector<int> arr4 = originalList;
+    start = std::chrono::steady_clock::now();
+    merge_sort(arr4);
+    end = std::chrono::steady_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    cout << "Merge sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
+    outputFile << "Merge Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
+
+    vector<int> arr5 = originalList;
+    start = std::chrono::steady_clock::now();
+    heap_sort(arr5);
+    end = std::chrono::steady_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    cout << "Heap sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
+    outputFile << "Heap Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
+
+    vector<int> arr6 = originalList;
+    start = std::chrono::steady_clock::now();
+    quick_sort(arr6);
+    end = std::chrono::steady_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    cout << "Quick sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
+    outputFile << "Quick Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
+
+    vector<int> arr7 = originalList; 
+    start = std::chrono::steady_clock::now();
+    cocktail_sort(arr7);
+    end = std::chrono::steady_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    cout << "Cocktail sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
+
+    vector<int> arr8 = originalList;
+    start = std::chrono::steady_clock::now();
+    cycle_sort(arr8);
+    end = std::chrono::steady_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    cout << "Cycle sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
+    outputFile << "Cycle Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
+
+    vector<int> arr9 = originalList;
+    start = std::chrono::steady_clock::now();
+    merge_sort_3way(arr9);
+    end = std::chrono::steady_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    cout << "3-way Merge sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
+    outputFile << "3-way Merge Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
+    
+    vector<int> arr10 = originalList;
+    start = std::chrono::steady_clock::now();
+    counting_sort(arr10);
+    end = std::chrono::steady_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    cout << "Counting sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
+    outputFile << "Counting Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
+
+    vector<int> arr11 = originalList;
+    start = std::chrono::steady_clock::now();
+    radix_sort(arr11);
+    end = std::chrono::steady_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    cout << "Radix sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl; 
+    outputFile << "Radix Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
+
+    vector<int> arr12 = originalList;
+    start = std::chrono::steady_clock::now();
+    introsort(arr12);
+    end = std::chrono::steady_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    cout << "Introsort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
+    outputFile << "Introsort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
+
+    vector<int> arr13 = originalList;
+    start = std::chrono::steady_clock::now();
+    timsort(arr13);
+    end = std::chrono::steady_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    cout << "Timsort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
+    outputFile << "Timsort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
+    outputFile << endl;
 }
   
 void bubble_sort(vector<int>& arr) { //swaps adjacent out-of-order elements until the array is fully sorted O(n^2)
@@ -353,167 +570,109 @@ void timsort(vector<int>& arr) { //combines Merge Sort and Insertion Sort by exp
         size *= 2;
     }
 }
-void bogo_sort(vector<int>& arr) { //randomly shuffles the array until it happens to be sorted O((n+1)!) on average, O(∞) in worst case
-    while (!is_sorted(arr.begin(), arr.end())) {
-        random_shuffle(arr.begin(), arr.end());
-    }
-}
 
-void stalin_sort(vector<int>& arr) { //"sorts" the array by removing any element that is out of order, keeping only the longest non-decreasing prefix O(n)
-    vector<int> result;
-    result.push_back(arr[0]);
-    for (int i = 1; i < arr.size(); i++) {
-        if (arr[i] >= result.back()) {
-            result.push_back(arr[i]);
-        }
-    }
-    arr = result;
-}
-
-void miracle_sort(vector<int>& arr) { //waits for cosmic radiation or hardware errors to randomly flip bits in memory until the array becomes sorted O(∞) on average, O(∞) in worst case
-    while (!is_sorted(arr.begin(), arr.end())) {
-        // Do nothing, just hope for a miracle
-    }
-}
 int main(){
     srand(time(0));
-
-    int x,y;
-    cout<<"Enter the maximum number and the count of random numbers: ";
-    cin>>x>>y;
-    cout<<"Use meme sorting algorithms? !might not work properly! (y/n): ";
-    char choice;
-    cin>>choice;
-    vector<int> randomList = generateRandomNumbers(x, y);
     
-    vector<int> arr1 = randomList;
-    auto start = std::chrono::steady_clock::now();
-    bubble_sort(arr1);
-    auto end = std::chrono::steady_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << "Bubble sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" <<std::endl;
-    outputFile << "Bubble Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
-
-    vector<int> arr2 = randomList;
-    start = std::chrono::steady_clock::now();
-    insertion_sort(arr2);
-    end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << "Insertion sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
-    outputFile << "Insertion Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
-
-    vector<int> arr3 = randomList;
-    start = std::chrono::steady_clock::now();
-    selection_sort(arr3);
-    end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << "Selection sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
-    outputFile << "Selection Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
-
-    vector<int> arr4 = randomList;
-    start = std::chrono::steady_clock::now();
-    merge_sort(arr4);
-    end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << "Merge sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
-    outputFile << "Merge Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
-
-    vector<int> arr5 = randomList;
-    start = std::chrono::steady_clock::now();
-    heap_sort(arr5);
-    end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << "Heap sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
-    outputFile << "Heap Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
-
-    vector<int> arr6 = randomList;
-    start = std::chrono::steady_clock::now();
-    quick_sort(arr6);
-    end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << "Quick sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
-    outputFile << "Quick Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
-
-    vector<int> arr7 = randomList; 
-    start = std::chrono::steady_clock::now();
-    cocktail_sort(arr7);
-    end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << "Cocktail sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
-
-    vector<int> arr8 = randomList;
-    start = std::chrono::steady_clock::now();
-    cycle_sort(arr8);
-    end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << "Cycle sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
-    outputFile << "Cycle Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
-
-    vector<int> arr9 = randomList;
-    start = std::chrono::steady_clock::now();
-    merge_sort_3way(arr9);
-    end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << "3-way Merge sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
-    outputFile << "3-way Merge Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
+    int mode;
+    cout << "=== Sorting Algorithm Benchmarker ===" << endl;
+    cout << "Select mode:" << endl;
+    cout << "1. Single use" << endl;
+    cout << "2. Multiple runs" << endl;
+    cout << "Enter your choice (1 or 2): ";
+    cin >> mode;
     
-    vector<int> arr10 = randomList;
-    start = std::chrono::steady_clock::now();
-    counting_sort(arr10);
-    end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << "Counting sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
-    outputFile << "Counting Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
-
-    vector<int> arr11 = randomList;
-    start = std::chrono::steady_clock::now();
-    radix_sort(arr11);
-    end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << "Radix sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl; 
-    outputFile << "Radix Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
-
-    vector<int> arr12 = randomList;
-    start = std::chrono::steady_clock::now();
-    introsort(arr12);
-    end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << "Introsort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
-    outputFile << "Introsort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
-
-    vector<int> arr13 = randomList;
-    start = std::chrono::steady_clock::now();
-    timsort(arr13);
-    end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << "Timsort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
-    outputFile << "Timsort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
-
-    if(choice == 'y' || choice == 'Y') {
-        vector<int> arr14 = randomList;
-        start = std::chrono::steady_clock::now();
-        bogo_sort(arr14);
-        end = std::chrono::steady_clock::now();
-        duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-        cout << "Bogo sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
-        outputFile << "Bogo Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
-
-        vector<int> arr15 = randomList;
-        start = std::chrono::steady_clock::now();
-        stalin_sort(arr15);
-        end = std::chrono::steady_clock::now();
-        duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-        cout << "Stalin sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
-        outputFile << "Stalin Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
-
-        vector<int> arr16 = randomList;
-        start = std::chrono::steady_clock::now();
-        miracle_sort(arr16);
-        end = std::chrono::steady_clock::now();
-        duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-        cout << "Miracle sort time: " << duration.count() << " nanoseconds, " <<duration.count() / 1000000.0 << " milliseconds, " << duration.count() / 1000000000.0 << " seconds" << std::endl;
-        outputFile << "Miracle Sort," << duration.count() << " nanoseconds," << duration.count() / 1000000.0 << " milliseconds," << duration.count() / 1000000000.0 << " seconds" << std::endl;
+    if (mode == 1) {
+        // SINGLE USE MODE
+        int choice;
+        vector<int> randomList;
+        
+        cout << "\nSelect list type:" << endl;
+        cout << "1. Random list" << endl;
+        cout << "2. Custom list (from custom_list.txt)" << endl;
+        cout << "Enter your choice (1 or 2): ";
+        cin >> choice;
+        
+        if (choice == 2) {
+            randomList = loadCustomList();
+            if (randomList.empty()) {
+                cout << "Falling back to random list..." << endl;
+                int x, y;
+                cout << "Enter the maximum number and the count of random numbers: ";
+                cin >> x >> y;
+                randomList = generateRandomNumbers(x, y);
+                runAllSortingAlgorithms(randomList, "Random (fallback)");
+            } else {
+                runAllSortingAlgorithms(randomList, "Custom (Single)");
+            }
+        } else {
+            int x, y;
+            cout << "Enter the maximum number and the count of random numbers: ";
+            cin >> x >> y;
+            randomList = generateRandomNumbers(x, y);
+            runAllSortingAlgorithms(randomList, "Random (Single)");
+        }
+    } else {
+        // MULTIPLE USE MODE
+        vector<vector<int>> allLists;
+        
+        // Load custom lists from custom_list.txt
+        cout << "\nLoading custom lists from custom_list.txt..." << endl;
+        vector<vector<int>> customLists = loadAllCustomListsByLine();
+        for (const auto& customList : customLists) {
+            allLists.push_back(customList);
+        }
+        
+        // Ask for random lists parameters
+        int totalRandomGenerated = 0;
+        bool generateMore = true;
+        
+        while (generateMore) {
+            int maxNumber, count, numRandomRuns;
+            
+            cout << "\nEnter the maximum number for the random lists: ";
+            cin >> maxNumber;
+            cout << "Enter the count of elements per random list: ";
+            cin >> count;
+            cout << "How many random lists do you want to generate with these parameters? ";
+            cin >> numRandomRuns;
+            
+            // Generate random lists
+            for (int i = 0; i < numRandomRuns; i++) {
+                vector<int> randomList = generateRandomNumbers(maxNumber, count);
+                allLists.push_back(randomList);
+                totalRandomGenerated++;
+            }
+            
+            cout << "\nGenerated " << numRandomRuns << " random lists." << endl;
+            
+            // Ask if they want to generate more
+            char choice;
+            cout << "Do you want to generate more random lists with different parameters? (y/n): ";
+            cin >> choice;
+            generateMore = (choice == 'y' || choice == 'Y');
+        }
+        
+        cout << "\n" << string(50, '=') << endl;
+        cout << "Total lists to process: " << allLists.size() << " (";
+        cout << customLists.size() << " custom + " << totalRandomGenerated << " random)" << endl;
+        cout << string(50, '=') << endl;
+        
+        // Run all sorting algorithms for each list
+        for (int i = 0; i < allLists.size(); i++) {
+            string label;
+            if (i < customLists.size()) {
+                label = "Custom List " + to_string(i + 1);
+            } else {
+                label = "Random List " + to_string(i - customLists.size() + 1);
+            }
+            runAllSortingAlgorithms(allLists[i], label);
+        }
+        
+        cout << "\n" << string(50, '=') << endl;
+        cout << "All " << allLists.size() << " lists have been processed!" << endl;
+        cout << string(50, '=') << endl;
     }
-    outputFile << endl;
+    
     return 0;
 }
