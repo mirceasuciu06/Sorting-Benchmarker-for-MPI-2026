@@ -28,12 +28,12 @@ void radix_sort(vector<int>& arr);
 void introsort(vector<int>& arr);
 void timsort(vector<int>& arr);
 
-vector<int> generateRandomNumbers(int maxNumber, int count) {
+vector<int> generateRandomNumbers(int minNumber, int maxNumber, int count) {
     std::vector<int> randomList;
 
     for(int i = 0;i < count; i++)
     {
-        randomList.push_back(rand() % maxNumber + 1);
+        randomList.push_back(rand() % (maxNumber - minNumber + 1) + minNumber);
     }
 
     return randomList;
@@ -597,19 +597,19 @@ int main(){
             randomList = loadCustomList();
             if (randomList.empty()) {
                 cout << "Falling back to random list..." << endl;
-                int x, y;
-                cout << "Enter the maximum number and the count of random numbers: ";
-                cin >> x >> y;
-                randomList = generateRandomNumbers(x, y);
+                int minNum, maxNum, cnt;
+                cout << "Enter the minimum number, maximum number, and the count of random numbers: ";
+                cin >> minNum >> maxNum >> cnt;
+                randomList = generateRandomNumbers(minNum, maxNum, cnt);
                 runAllSortingAlgorithms(randomList, "Random (fallback)");
             } else {
                 runAllSortingAlgorithms(randomList, "Custom (Single)");
             }
         } else {
-            int x, y;
-            cout << "Enter the maximum number and the count of random numbers: ";
-            cin >> x >> y;
-            randomList = generateRandomNumbers(x, y);
+            int minNum, maxNum, cnt;
+            cout << "Enter the minimum number, maximum number, and the count of random numbers: ";
+            cin >> minNum >> maxNum >> cnt;
+            randomList = generateRandomNumbers(minNum, maxNum, cnt);
             runAllSortingAlgorithms(randomList, "Random (Single)");
         }
     } else {
@@ -628,10 +628,10 @@ int main(){
         bool generateMore = true;
         
         while (generateMore) {
-            int maxNumber, count, numRandomRuns;
+            int minNumber, maxNumber, count, numRandomRuns;
             
-            cout << "\nEnter the maximum number for the random lists: ";
-            cin >> maxNumber;
+            cout << "\nEnter the minimum number and maximum number for the random lists: ";
+            cin >> minNumber >> maxNumber;
             cout << "Enter the count of elements per random list: ";
             cin >> count;
             cout << "How many random lists do you want to generate with these parameters? ";
@@ -639,7 +639,7 @@ int main(){
             
             // Generate random lists
             for (int i = 0; i < numRandomRuns; i++) {
-                vector<int> randomList = generateRandomNumbers(maxNumber, count);
+                vector<int> randomList = generateRandomNumbers(minNumber, maxNumber, count);
                 allLists.push_back(randomList);
                 totalRandomGenerated++;
             }
